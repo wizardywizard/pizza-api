@@ -46,6 +46,6 @@ class ToppingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def topping_params
-      params.require(:topping).permit(:name, :meat, :vegetable)
+      params.require(:topping).permit(:name, :meat)
     end
 end

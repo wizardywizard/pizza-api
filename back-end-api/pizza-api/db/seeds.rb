@@ -9,12 +9,12 @@
 Pizza.create([
     {
         name: "the big cheese",
-        sause: "cheese sauce",
+        sauce: "cheese sauce",
         cheese: "extra cheese"
     },
     {
         name: "the reg",
-        sause: "pizza sauce",
+        sauce: "pizza sauce",
         cheese: "mozeriala cheese"
     }
 ])
@@ -22,97 +22,78 @@ Pizza.create([
 Topping.create([
     {
         name: "Ham",
-        meat: true,
-        vegetable: false
+        meat: true
     },
     {
         name: "Beef",
-        meat: true,
-        vegetable: false  
+        meat: true
     },
     {
         name: "Salami",
-        meat: true,
-        vegetable: false 
+        meat: true 
     },
     {
         name: "Pepperoni",
-        meat: true,
-        vegetable: false
+        meat: true
     },
     {
         name: "Italian Sausage",
-        meat: true,
-        vegetable: false
+        meat: true
     },
     {
         name: "Premium Chicken",
-        meat: true,
-        vegetable: false
+        meat: true
     },
     {
         name: "Bacon",
-        meat: true,
-        vegetable: false 
+        meat: true 
     },
     {
         name: "Philly Steak",
-        meat: true,
-        vegetable: false
+        meat: true
     },
     {
         name: "Garlic",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Jalapeno",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Onions",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Banana Peppers",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Diced Tomatos",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Black Olives",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Mushrooms",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Pineapple",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Green Peppers",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Spinach",
-        meat: false,
-        vegetable: true
+        meat: false
     },
     {
         name: "Red Peppers",
-        meat: false,
-        vegetable: true
+        meat: false
     }
 ])

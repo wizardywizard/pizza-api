@@ -3,7 +3,6 @@ class CreateToppings < ActiveRecord::Migration[6.0]
     create_table :toppings do |t|
       t.string :name
       t.boolean :meat
-      t.boolean :vegetable
 
       t.timestamps
     end

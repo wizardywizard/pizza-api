@@ -10,22 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_013206) do
-
-  create_table "pizzas", force: :cascade do |t|
-    t.string "name"
-    t.string "sause"
-    t.string "cheese"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "toppings", force: :cascade do |t|
-    t.string "name"
-    t.boolean "meat"
-    t.boolean "vegetable"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
