@@ -9,7 +9,7 @@ class ToppingsController < ApplicationController
   end
 
   # GET /toppings/1
-  def show
+  def show   
     render json: @topping
   end
 

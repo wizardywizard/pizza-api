@@ -10,7 +10,9 @@ class PizzasController < ApplicationController
 
   # GET /pizzas/1
   def show
-    render json: @pizza
+    options = {}
+    options[:include] = [:toppings, :'toppings.name', :'toppings.meat' ]
+    render json: PizzaSerializer.new(@pizza, options).serialized_json
   end
 
   # POST /pizzas
