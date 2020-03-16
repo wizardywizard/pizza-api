@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_210537) do
     t.boolean "meat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "pizzas_id"
-    t.index ["pizzas_id"], name: "index_toppings_on_pizzas_id"
+    t.integer "pizza_id"
+    t.index ["pizza_id"], name: "index_toppings_on_pizza_id"
   end
 
-  add_foreign_key "toppings", "pizzas", column: "pizzas_id"
+  add_foreign_key "toppings", "pizzas"
 end
