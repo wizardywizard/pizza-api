@@ -1,3 +1,3 @@
-class Toppings < ApplicationRecord
+class Topping < ApplicationRecord
     belongs_to :pizza
 end
