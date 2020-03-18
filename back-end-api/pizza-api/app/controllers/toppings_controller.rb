@@ -3,7 +3,7 @@ class ToppingsController < ApplicationController
 
   # GET /toppings
   def index
-    @toppings = Topping.all
+    @toppings = Toppings.all
 
     render json: @toppings, except: [:id, :created_at, :updated_at, :pizza_id]
   end
@@ -15,7 +15,7 @@ class ToppingsController < ApplicationController
 
   # POST /toppings
   def create
-    @topping = Topping.new(topping_params)
+    @topping = Toppings.new(topping_params)
 
     if @topping.save
       render json: @topping, status: :created, location: @topping
@@ -41,11 +41,11 @@ class ToppingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topping
-      @topping = Topping.find(params[:id])
+      @topping = Toppings.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def topping_params
-      params.require(:topping).permit(:name, :meat)
+      params.require(:toppings).permit(:name, :meat)
     end
 end

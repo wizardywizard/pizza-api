@@ -10,7 +10,7 @@ Pizza.create!([
     {name: "the big cheese", sauce: "cheese sauce", cheese: "xtra cheese"}
 ])
 
-Topping.create!([
+Toppings.create!([
     {name: "pepperoni", meat: true, pizza_id: 1},
     {name: "Ham", meat: true, pizza_id: 1},
     {name: "Italian Sausage", meat: true, pizza_id: 1}
