@@ -1,4 +1,4 @@
-class PizzaAPI{
+class PizzaAPI {
     static getPizzas(){
         return fetch(`${PizzaAPI.base_url}/pizzas`).then(res => res.json())
     }
@@ -47,6 +47,7 @@ class PizzaAPI{
         .then(res => res.json())
     }
 }
+
 PizzaAPI.base_url = "http://localhost:3000"
 
 class Pizza {
@@ -122,12 +123,96 @@ class Pizza {
 
 Pizza.all = []
 
+class Topping {
+    constructor({id, name, meat, pizza_id}) {
+        this.id = id
+        this.name = name
+        this.meat = meat
+        this.pizza_id = pizza_id
+    }
+
+    static findOrCreateBy(attributes) {
+        let found = Toppings.all.find(topping => topping.id == attributes.id)
+        return found ? found : new Toppings(attributes).save()
+    }
+
+    save() {
+        Toppings.all.push(this)
+        return this
+    }
+}
+Topping.all = []
+
+class PizzaPage {
+    constructor(pizzas) {
+        this.pizzas = pizzas
+    }
+
+    renderForm() {
+        return `
+        <form class="addPizza">
+          <h3>Add Pizza</h3>
+          <p>
+            <label class="db">Name</label>
+            <input type="text" name="name" id="name" />
+          </p>
+          <p>
+            <label class="db">Sauce</label>
+            <input type="text" name="sauce" id="sauce" />
+          </p>
+          <p>
+            <label class="db">Toppings</label>
+            <input type="text" name="toppings" id="toppings" />
+          </p>
+          <input type="submit" value="Add Pizza" />
+        </form>
+      `
+    }
+
+    renderList() {
+        return this.pizzas.map(pizza => {
+            return pizza.renderCard()
+        }).join(' ')
+    }
+
+    render() {
+        return `
+        <h1>Hello from PizzaPage</h1>
+        ${this.renderForm()}
+        <section id="pizza">
+          ${this.renderList()}
+        </section>
+      `
+    }  
+}
+
+class PizzaShowPage {
+        constructor(pizza) {
+            this.pizza = pizza
+    }
+
+    renderToppingPizza() {
+        let ul = document.createElement('ul')
+        ul.id = "trackList"
+        this.album.toppings().forEach(topping => {
+            ul.insertAdjacentHTML('beforeend', track.render())
+        })
+        return ul.outerHTML
+    }
+
+    render() {
+        return `    
+    <div class="ph2 ph0-ns pb3 link db">
+      <h3 class="f5 f4-ns mb0 black-90">${this.pizza.name}</h3>
+    </div>
+    ${this.renderTrackList()}
+    `
+    }
+
+// Event Listeners
 
 
-
-
-
-
+}
 
 
 
