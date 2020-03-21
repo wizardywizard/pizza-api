@@ -91,7 +91,7 @@ class Pizza {
         if(this.toppings().length === 0) {
             return PizzaAPI.getPizzaShow(this.id)
             .then(({toppings}) => {
-                toppings.map(toppingsAttributes => toppings.findOrCreateBy(toppingsAttributes))
+                toppings.map(toppingAttributes => Topping.findOrCreateBy(toppingAttributes))
                 return this
             })
         }else {
@@ -99,8 +99,7 @@ class Pizza {
         }
     }
 
-    toppings() {
-        debugger
+    toppings() {        
         return Topping.all.filter(topping => topping.pizza_id == this.id)        
     }
 
@@ -128,17 +127,23 @@ class Topping {
         this.pizza_id = pizza_id
     }
 
-    static findOrCreateBy(attributes) {
-        let found = Topping.all.find(topping => topping.id == attributes.id)
-        return found ? found : new Topping(attributes).save()
+    static findOrCreateBy(toppingAttributes) {
+        debugger       
+        let found = Topping.all.find(topping => topping.id == toppingAttributes.id)
+        return found ? found : new Topping(toppingAttributes).save()
     }
 
     save() {
         Toppings.all.push(this)
         return this
     }
+
+    render() {
+        return `
+        <li>${this.name}</li>`
+    }
 }
-Topping.all = []
+ Topping.all = []
 
 class PizzaPage {
     constructor(pizzas) {
