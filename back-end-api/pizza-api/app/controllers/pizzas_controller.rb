@@ -5,7 +5,7 @@ class PizzasController < ApplicationController
   def index
     @pizzas = Pizza.all
 
-    render json: @pizzas, except: [:id, :created_at, :updated_at]
+    render json: @pizzas, except: [:created_at, :updated_at]
   end
 
   # GET /pizzas/1

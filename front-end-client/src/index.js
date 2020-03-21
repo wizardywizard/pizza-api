@@ -61,9 +61,9 @@ class Pizza {
     static getAll() {
         if(Pizza.getAll.length === 0) {
             return PizzaAPI.getPizzas().then(pizzas => {
-                Pizza.all = pizzas.map(pizzaAttributes =>
-                    new Pizza(pizzaAttributes)
-                )
+                Pizza.all = pizzas.map(pizzaAttributes =>{
+                   return new Pizza(pizzaAttributes)
+                })
                 return Pizza.all
             })
         }else{
@@ -100,18 +100,15 @@ class Pizza {
     }
 
     toppings() {
-        return this.toppings.all.filter(topping => topping.pizza_id == this.id)
+        debugger
+        return Topping.all.filter(topping => topping.pizza_id == this.id)        
     }
 
     renderCard() {
         let article = document.createElement('article')
         article.className = "fl w-100 w-50-m  w-25-ns pa2-ns"
-        article.dataset['pizza_id'] = this.mbid
+        article.dataset['pizza_id'] = this.id
         article.innerHTML = `
-          <div class="aspect-ratio aspect-ratio--1x1">
-            <img style="background-image:url(${this.image_url});" 
-            class="db bg-center cover aspect-ratio--object" />
-          </div>
           <a href="#0" class="ph2 ph0-ns pb3 link db">
             <h3 class="f5 f4-ns mb0 black-90">${this.name}</h3>
           </a>
@@ -132,8 +129,8 @@ class Topping {
     }
 
     static findOrCreateBy(attributes) {
-        let found = Toppings.all.find(topping => topping.id == attributes.id)
-        return found ? found : new Toppings(attributes).save()
+        let found = Topping.all.find(topping => topping.id == attributes.id)
+        return found ? found : new Topping(attributes).save()
     }
 
     save() {
@@ -155,6 +152,10 @@ class PizzaPage {
           <p>
             <label class="db">Name</label>
             <input type="text" name="name" id="name" />
+          </p>
+          <p>
+            <label class="db">Cheese</label>
+            <input type="text" name="cheese" id="cheese" />
           </p>
           <p>
             <label class="db">Sauce</label>
@@ -193,9 +194,9 @@ class PizzaShowPage {
 
     renderToppingPizza() {
         let ul = document.createElement('ul')
-        ul.id = "trackList"
-        this.album.toppings().forEach(topping => {
-            ul.insertAdjacentHTML('beforeend', track.render())
+        ul.id = "pizzaList"
+        this.pizza.toppings().forEach(topping => {
+            ul.insertAdjacentHTML('beforeend', pizza.render())
         })
         return ul.outerHTML
     }
@@ -205,7 +206,7 @@ class PizzaShowPage {
     <div class="ph2 ph0-ns pb3 link db">
       <h3 class="f5 f4-ns mb0 black-90">${this.pizza.name}</h3>
     </div>
-    ${this.renderTrackList()}
+    ${this.renderPizzaList()}
     `
     }
 }
@@ -216,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let root = document.getElementById('root')
     root.innerHTML = loadingGif()
     Pizza.getAll().then(pizzas => {
-        root.innerHTML = new PizzaPage(pizzas.render())
+        root.innerHTML = new PizzaPage(pizzas).render()
     })
     document.addEventListener('click', (e) => {
         if(e.target.matches(".pizzaShow")) {
