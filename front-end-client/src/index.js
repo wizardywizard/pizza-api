@@ -127,14 +127,13 @@ class Topping {
         this.pizza_id = pizza_id
     }
 
-    static findOrCreateBy(toppingAttributes) {
-        debugger       
+    static findOrCreateBy(toppingAttributes) {      
         let found = Topping.all.find(topping => topping.id == toppingAttributes.id)
         return found ? found : new Topping(toppingAttributes).save()
     }
 
     save() {
-        Toppings.all.push(this)
+        Topping.all.push(this)
         return this
     }
 
@@ -183,7 +182,7 @@ class PizzaPage {
 
     render() {
         return `
-        <h1>Hello from PizzaPage</h1>
+        <h1>Hello from Pizza Grid</h1>
         ${this.renderForm()}
         <section id="pizza">
           ${this.renderList()}
@@ -201,7 +200,7 @@ class PizzaShowPage {
         let ul = document.createElement('ul')
         ul.id = "pizzaList"
         this.pizza.toppings().forEach(topping => {
-            ul.insertAdjacentHTML('beforeend', pizza.render())
+            ul.insertAdjacentHTML('beforeend', topping.render())
         })
         return ul.outerHTML
     }
@@ -211,7 +210,7 @@ class PizzaShowPage {
     <div class="ph2 ph0-ns pb3 link db">
       <h3 class="f5 f4-ns mb0 black-90">${this.pizza.name}</h3>
     </div>
-    ${this.renderPizzaList()}
+    ${this.renderToppingPizza()}
     `
     }
 }
@@ -231,8 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 root.innerHTML = new PizzaShowPage(pizza).render()
             })
         }
-        if(e.target.matches('.pizzasIndex')) {
-            root.innerHTML = new PizzaPage(pizza.all).render()
+        if(e.target.matches('.pizzaIndex')) {
+            debugger
+            root.innerHTML = new PizzaPage(Pizza.all).render()
         }
     })
     document.addEventListener('submit', (e) => {

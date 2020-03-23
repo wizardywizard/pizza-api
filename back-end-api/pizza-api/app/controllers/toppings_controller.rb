@@ -5,7 +5,7 @@ class ToppingsController < ApplicationController
   def index
     @toppings = Topping.all
 
-    render json: @toppings, except: [:id, :created_at, :updated_at, :pizza_id]
+    render json: @toppings, except: [:created_at, :updated_at]
   end
 
   # GET /toppings/1
