@@ -165,6 +165,15 @@ class PizzaPage {
             <label class="db">Sauce</label>
             <input type="text" name="sauce" id="sauce" />
           </p>
+          <form>
+            <fieldset>
+            <legend>Choose your topping</legend>
+                <div>
+                    <input type="checkbox" id="topings" name="topping" value="toppings">
+                    <label for="toppings">Toppings</label>
+                </div>
+            </fieldset>
+          </form>
           <p>
             <label class="db">Toppings</label>
             <input type="text" name="toppings" id="toppings" />
