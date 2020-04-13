@@ -78,7 +78,7 @@ class Pizza {
     static create(pizzaAttributes){
         return PizzaAPI.createPizza(pizzaAttributes)
         .then(pizzaJson => {
-            return new Pizza(pizzaJSON).save()
+            return new Pizza(pizzaJson2).save()
         })
     }
 
@@ -165,19 +165,6 @@ class PizzaPage {
             <label class="db">Sauce</label>
             <input type="text" name="sauce" id="sauce" />
           </p>
-          <form>
-            <fieldset>
-            <legend>Choose your topping</legend>
-                <div>
-                    <input type="checkbox" id="topings" name="topping" value="toppings">
-                    <label for="toppings">Toppings</label>
-                </div>
-            </fieldset>
-          </form>
-          <p>
-            <label class="db">Toppings</label>
-            <input type="text" name="toppings" id="toppings" />
-          </p>
           <input type="submit" value="Add Pizza" />
         </form>
       `
@@ -214,6 +201,19 @@ class PizzaShowPage {
         return ul.outerHTML
     }
 
+    renderToppingForm(){
+        return`
+        <form class="addTopping">
+            <h3>Add Topping</h3>
+            <p>
+                <label class="db">Name</label>
+                <input type="text" name="name" id="name" />
+            </p>
+            <input type="submit" value="Add Topping" />
+        </form>
+        `
+    }
+
     render() {
         return `    
     <div class="ph2 ph0-ns pb3 link db">
@@ -221,6 +221,7 @@ class PizzaShowPage {
       <h3 class="f5 f4-ns mb0 black-90">${this.pizza.sauce}</h3>
       <h3 class="f5 f4-ns mb0 black-90">${this.pizza.cheese}</h3>
     </div>
+    ${this.renderToppingForm()}
     ${this.renderToppingPizza()}
     `
     }
