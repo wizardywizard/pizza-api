@@ -4,12 +4,14 @@ class Pizza {
         this.name = name
         this.sauce = sauce
         this.cheese = cheese
-    }
+        Pizza.all.push(this)
+    }    
+    Pizza.all = []
 
     static getAll() {
         if(Pizza.getAll.length === 0) {
             return PizzaAPI.getPizzas().then(pizzas => {
-                Pizza.all = pizzas.map(pizzaAttributes =>{
+                 pizzas.map(pizzaAttributes =>{
                    return new Pizza(pizzaAttributes)
                 })
                 return Pizza.all
@@ -64,5 +66,3 @@ class Pizza {
         return article.outerHTML
     }
 }
-
-Pizza.all = []
