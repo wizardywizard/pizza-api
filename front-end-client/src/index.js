@@ -243,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
         if(e.target.matches('.pizzaIndex')) {
-            debugger
             root.innerHTML = new PizzaPage(Pizza.all).render()
         }
     })
@@ -256,6 +255,18 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(pizza => {
               document.querySelector('#pizzas').insertAdjacentHTML('beforeend', pizza.renderCard())
             })
+        }
+    })
+    document.addEventListener('submit', (e) =>{
+        e.preventDefault()
+        if(e.target.matches('.addTopping')){
+            console.log("hello")
+            let formData = {}
+            e.target.querySelectorAll('input[type="text"]').forEach(input => formData[input.id] = input.value)
+            let newTopping = Topping.findOrCreateBy(formData).appendChild(newTopping.name) 
+            let newList = document.createElement('li')
+            const toppingList = document.querySelector('pizzaList') 
+
         }
     })
 })
