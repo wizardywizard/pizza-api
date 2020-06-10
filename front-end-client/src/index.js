@@ -262,11 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if(e.target.matches('.addTopping')){
             console.log("hello")
             let formData = {}
-            e.target.querySelectorAll('input[type="text"]').forEach(input => formData[input.id] = input.value)
-            let newTopping = Topping.findOrCreateBy(formData).appendChild(newTopping.name) 
-            let newList = document.createElement('li')
-            const toppingList = document.querySelector('pizzaList') 
-
+            let userInputFeild =  event.target.querySelector('#name')
+            formData.name = userInputFeild.value
+            let newTopping = Topping.findOrCreateBy(formData)
+            let newList = document.createElement('li') 
+            newList.innerText = newTopping.name
+            const toppingList = document.querySelector('#pizzaList') 
+            toppingList.appendChild(newList)
+            userInputFeild.value = ""
         }
     })
 })
