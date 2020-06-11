@@ -203,7 +203,7 @@ class PizzaShowPage {
 
     renderToppingForm(){
         return`
-        <form class="addTopping">
+        <form class="addTopping" data-pizza="${this.pizza.id}"
             <h3>Add Topping</h3>
             <p>
                 <label class="db">Name</label>
@@ -265,11 +265,19 @@ document.addEventListener('DOMContentLoaded', () => {
             let userInputFeild =  event.target.querySelector('#name')
             formData.name = userInputFeild.value
             let newTopping = Topping.findOrCreateBy(formData)
+            // grab id from event.target
+           // use id to call find pizza
+           // add the topping to the pizza's toppings array
+            const pizzaId = Pizza.findById(event.target.dataset.pizza)
+            debugger
             let newList = document.createElement('li') 
             newList.innerText = newTopping.name
             const toppingList = document.querySelector('#pizzaList') 
             toppingList.appendChild(newList)
             userInputFeild.value = ""
+           // grab id from event.target
+           // use id to call find pizza
+           // add the topping to the pizza's toppings array
         }
     })
 })
