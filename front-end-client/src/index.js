@@ -51,6 +51,8 @@ class PizzaAPI {
 PizzaAPI.base_url = "http://localhost:3000"
 
 class Pizza {
+    // pizzaAttributes = {id, name, sauce, cheese}
+    // constructor ({pizzaAttributes.id, pizzaAttributes.name, pizzaAttributes.sauce, pizzaAttributes.cheese})
     constructor({id, name, sauce, cheese}){
         this.id = id
         this.name = name
@@ -59,7 +61,7 @@ class Pizza {
     }
 
     static getAll() {
-        if(Pizza.getAll.length === 0) {
+        if(Pizza.all.length === 0) {
             return PizzaAPI.getPizzas().then(pizzas => {
                 Pizza.all = pizzas.map(pizzaAttributes =>{
                    return new Pizza(pizzaAttributes)
