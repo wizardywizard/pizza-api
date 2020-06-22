@@ -51,8 +51,8 @@ class PizzaAPI {
 PizzaAPI.base_url = "http://localhost:3000"
 
 class Pizza {
-    // pizzaAttributes = {id, name, sauce, cheese}
-    // constructor ({pizzaAttributes.id, pizzaAttributes.name, pizzaAttributes.sauce, pizzaAttributes.cheese})
+    // pizzaAttributes = (id, name, sauce, cheese)
+    // constructor (pizzaAttributes.id, pizzaAttributes.name, pizzaAttributes.sauce, pizzaAttributes.cheese)
     constructor({id, name, sauce, cheese}){
         this.id = id
         this.name = name
@@ -115,6 +115,8 @@ class Pizza {
           </a>
           <p><a href="#/pizzas/${this.id}" class="pizzaShow ba1 pa2 bg-moon-gray link" data-pizzaid="${this.id}">Pizza Details</a></p>
         `
+        // make the link into a button
+        // add event listener for button
         return article.outerHTML
     }
 }
