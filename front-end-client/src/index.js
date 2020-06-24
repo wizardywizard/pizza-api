@@ -113,12 +113,14 @@ class Pizza {
           <a href="#0" class="ph2 ph0-ns pb3 link db">
             <h3 class="f5 f4-ns mb0 black-90">${this.name}</h3>
           </a>
-          <p><a href="#/pizzas/${this.id}" class="pizzaShow ba1 pa2 bg-moon-gray link" data-pizzaid="${this.id}">Pizza Details</a></p>
+          <p id="pizzaShow"><button>Pizza Details</button>
+          
         `
+        // <p><a href="#/pizzas/${this.id}" class="pizzaShow ba1 pa2 bg-moon-gray link" data-pizzaid="${this.id}">Pizza Details</a></p>
         // make the link into a button
         // add event listener for button
         return article.outerHTML
-    }
+    }     
 }
 
 Pizza.all = []
@@ -278,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userInputFeild.value = ""           
         }
     })
+
 })
 
 const loadingGif = () => {
