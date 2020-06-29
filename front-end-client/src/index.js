@@ -51,8 +51,6 @@ class PizzaAPI {
 PizzaAPI.base_url = "http://localhost:3000"
 
 class Pizza {
-    // pizzaAttributes = (id, name, sauce, cheese)
-    // constructor (pizzaAttributes.id, pizzaAttributes.name, pizzaAttributes.sauce, pizzaAttributes.cheese)
     constructor({id, name, sauce, cheese}){
         this.id = id
         this.name = name
@@ -80,7 +78,7 @@ class Pizza {
     static create(pizzaAttributes){
         return PizzaAPI.createPizza(pizzaAttributes)
         .then(pizzaJson => {
-            return new Pizza(pizzaJson2).save()
+            return new Pizza(pizzaJson).save()
         })
     }
 
@@ -113,12 +111,8 @@ class Pizza {
           <a href="#0" class="ph2 ph0-ns pb3 link db">
             <h3 class="f5 f4-ns mb0 black-90">${this.name}</h3>
           </a>
-          <p id="pizzaShow"><button>Pizza Details</button>
-          
-        `
-        // <p><a href="#/pizzas/${this.id}" class="pizzaShow ba1 pa2 bg-moon-gray link" data-pizzaid="${this.id}">Pizza Details</a></p>
-        // make the link into a button
-        // add event listener for button
+          <p><a href="#/pizzas/${this.id}" class="pizzaShow" data-pizzaid="${this.id}">Pizza Details</a></p>          
+        `   
         return article.outerHTML
     }     
 }
@@ -259,14 +253,14 @@ document.addEventListener('DOMContentLoaded', () => {
           e.target.querySelectorAll('input[type="text"]').forEach(input => formData[input.id] = input.value)
           Pizza.create(formData)
             .then(pizza => {
-              document.querySelector('#pizzas').insertAdjacentHTML('beforeend', pizza.renderCard())
+              document.querySelector('#pizza').insertAdjacentHTML('beforeend', pizza.renderCard())                          
             })
+             formData = "" 
         }
     })
     document.addEventListener('submit', (e) =>{
         e.preventDefault()
         if(e.target.matches('.addTopping')){
-            console.log("hello")
             let formData = {}
             let userInputFeild =  event.target.querySelector('#name')
             formData.name = userInputFeild.value
