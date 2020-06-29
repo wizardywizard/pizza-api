@@ -111,7 +111,7 @@ class Pizza {
           <a href="#0" class="ph2 ph0-ns pb3 link db">
             <h3 class="f5 f4-ns mb0 black-90">${this.name}</h3>
           </a>
-          <p><a href="#/pizzas/${this.id}" class="pizzaShow" data-pizzaid="${this.id}">Pizza Details</a></p>          
+          <p><button class="pizzaShow" data-pizzaid='${this.id}'>Pizza Details</button></p>                   
         `   
         return article.outerHTML
     }     
